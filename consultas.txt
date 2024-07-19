@@ -1,0 +1,2 @@
+1. Creo una cuenta en https://groq.com/
+2. Documentación de groq => https://console.groq.com/docs/quickstart

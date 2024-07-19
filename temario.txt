@@ -1,0 +1,20 @@
+# (Clase 6)
+Introducción a Streamlit, creación de cuenta y su instalación.
+Introducción a Groq. Que es y como funciona su APi.
+Estructura básica de una aplicación Streamlit.
+Uso de elementos básicos de Streamlit: st.title(), st.text_input(), st.sidebar(), 
+
+# (Clase 7)
+Aprendizaje supervisado vs no supervisado. 
+Configuración básica de un modelo de lenguaje.
+Creación de plantillas de chat.
+Introducción a las variables de estado en Streamlit. 
+
+# (Clase 8)
+Manejo de historiales de chat con Streamlit.
+Almacenamiento y actualización del historial de chat.
+
+
+# (Clase 9)
+Personalización del chatbot.
+Implementación de un área de texto para mostrar el chat completo.
