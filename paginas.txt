@@ -1,0 +1,4 @@
+https://docs.streamlit.io/
+https://streamlit.io/components
+https://console.groq.com/keys
+https://console.groq.com/docs/quickstart

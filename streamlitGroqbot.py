@@ -5,20 +5,21 @@ from groq import Groq
 # Configuración básica
 MODELOS = ['llama3-8b-8192', 'llama3-70b-8192', 'mixtral-8x7b-32768']
 
-# def obtener_clave_api():
-#     return st.secrets["groqApi"]
-
-def configurar_pagina():
+def interfaz_basica():
     st.set_page_config(page_title="Mi chat de IA", page_icon="🤖")
     st.title("Mi chat de IA")
+    st.sidebar.title("Configuración de la IA")
+    modelo = st.sidebar.selectbox('Elegí un Modelo', options=MODELOS, index=0)
+    return modelo
+
+
+def obtener_clave_api():
+    return st.secrets["groqApi"]
 
 def crear_cliente_groq():
     return Groq(api_key='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')
 
-def interfaz_basica():
-    st.sidebar.title("Configuración de la IA")
-    modelo = st.sidebar.selectbox('Elegí un Modelo', options=MODELOS, index=0)
-    return modelo
+
 
 # Clase 7: Configuración del modelo y variables de estado
 def configurar_modelo(cliente, modelo, mensaje):
@@ -58,7 +59,6 @@ def generar_respuesta(chat_completo):
     return respuesta_completa
 
 def main():
-    configurar_pagina()
     cliente = crear_cliente_groq()
     inicializar_estado()
     
@@ -73,15 +73,12 @@ def main():
     if mensaje:
         ## FALTA MODIFICAR EL TRY Y EXCEPT (no se ve en clase) PARA QUE SEA CON CONDICIONALES (se ve en clase).
         actualizar_historial("user", mensaje)
-        try:
-            chat_completo = configurar_modelo(cliente, modelo, mensaje)
-            with st.chat_message("assistant"):
-                respuesta_completa = st.write_stream(generar_respuesta(chat_completo))
-            actualizar_historial("assistant", respuesta_completa)
-            # Actualizamos la página para ver todos los estados, los nuevos y los viejos.
-            st.rerun()
-        except Exception as e:
-            st.error(f"Error: {str(e)}")
+        chat_completo = configurar_modelo(cliente, modelo, mensaje)
+        with st.chat_message("assistant"):
+            respuesta_completa = st.write_stream(generar_respuesta(chat_completo))
+        actualizar_historial("assistant", respuesta_completa)
+        # Actualizamos la página para ver todos los estados, los nuevos y los viejos.
+        st.rerun()
 
 if __name__ == "__main__":
     main()
